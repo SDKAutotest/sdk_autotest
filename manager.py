@@ -17,11 +17,12 @@ def android_test():
 	driver = webdriver.WebDriver(desired_capabilities=device_desc)
 	#检查是否有授权弹出框
 	check_allow(app_config.android['allow_instll_id'])
-
-
+	# 初始化获取元素的类
 	logger.myprint("初始化Android元素类")
 	android_elements = elements.android(driver)
-
+	#获取首页的元素列表
+	home_elements = android_elements.home_elements
+	
 	logger.myprint("执行banner测试用例，获取元素")
 	banner = case.banner(driver,android_elements.banner_elements())
 	logger.myprint("执行用例，获取测试结果")
