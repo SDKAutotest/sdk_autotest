@@ -1,6 +1,14 @@
 import time
 
 def create_rep(result):
+    """{
+        "title":"banner广告第一个用例",
+        "run_time":time.strftime("%Y-%m-%d %H:%M:%S"),
+        "case_code":False,
+        "error":error_msg,
+        "event":event
+        }
+    """
 	print("----传入的测试结果：",result)
 	if result["case_code"]:
 		pass_or_fail = "测试通过"
@@ -11,7 +19,7 @@ def create_rep(result):
 <html>
 <head>
     <meta charset="utf-8">
-    <title>网盟SDK自动化测试报告</title>
+    <title>%s</title>
     <style>
         /*上部分样式*/
         div#report_head{
@@ -48,7 +56,7 @@ def create_rep(result):
             width: 9%;
         }
     </style>
-</head>"""+"""
+</head>""" % result['title']+"""
 <body style="background-color:#7CFC00;">
     <!-- 报告的头部 -->
     <div id="report_head">
@@ -142,30 +150,6 @@ def create_rep(result):
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td colspan="10">开屏无跳过按钮</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td colspan="10">开屏无跳过按钮</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td colspan="10">开屏无跳过按钮</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td colspan="10">开屏无跳过按钮</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td colspan="10">开屏无跳过按钮</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td colspan="10">开屏无跳过按钮</td>
-                </tr>
-                <tr>
-                    <td>9</td>
                     <td colspan="10">开屏无跳过按钮</td>
                 </tr>
                 <tr>

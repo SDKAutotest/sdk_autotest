@@ -15,6 +15,8 @@ def android_test():
 	device_desc = app_config.android['des_dic']
 	#实例化驱动器
 	driver = webdriver.WebDriver(desired_capabilities=device_desc)
+	#设置隐形等待元素时间
+	driver.implicitly_wait(30)
 	#检查是否有授权弹出框
 	check_allow(app_config.android['allow_instll_id'])
 	# 初始化获取元素的类
@@ -22,10 +24,16 @@ def android_test():
 	android_elements = elements.android(driver)
 	#获取首页的元素列表
 	home_elements = android_elements.home_elements
-	
 	logger.myprint("执行banner测试用例，获取元素")
+
+
+	# 获取到首页的banner按钮，然后点击
+	banner_button = home_elements['banner']
+	banner_button.click()
+	# 进入banner后，执行banner的用例
 	banner = case.banner(driver,android_elements.banner_elements())
 	logger.myprint("执行用例，获取测试结果")
+	# 执行第一个用例
 	result_1 = banner.banner_case_1()
 	logger.myprint("调用创建报告的函数，创建报告")
 	create_report.create_rep(result_1)

@@ -20,7 +20,12 @@ class android():
 
 	def home_element(self):
 		print("初始化获取元素的方法时，直接获取到整个首页的元素列表")
-		return 1
+		self.driver.find_element_by_id
+		return {
+		"banner" : 1,
+		"feed" :1,
+		"splash":2,
+		}
 
 	def splash_elements(self):
 
