@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新版测试报告</title>
+</head>
+<body>
+    <div class="report_head" align="center">
+        <h3>title（这里需要换成广告种类）</h3>
+        <h4>test result , tun time（是否测试通过，和测试时间）</h4>
+        <hr>
+    </div>
+    <div class="report_body">
+        <div class="filter_button">
+            <input type="button" value="筛选通过的" onclick="test_button()">
+            <input type="button" value="筛选未通过的" onclick="test_button()">
+            <input type="button" value="筛选埋点" onclick="test_button()">
+        </div>
+        <div class="data_list">
+
+        </div>
+    </div>
+
+<script>
+    function test_button() {
+        alert("测试按钮的回调函数")
+    }
+</script>
+</body>
+</html>

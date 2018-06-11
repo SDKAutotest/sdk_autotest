@@ -25,14 +25,14 @@
   "appPackage": "com.union_test.toutiao"
 }
 
-
-
 '''
 
 # 如果每次跑，会要求安装的话，存放允许安装的id
 huawei_mate10 = "com.android.packageinstaller:id/permission_allow_button"
 vivo_y66 = "android:id/button1"
 sanxing_s6 = ""
+#华为畅享7Plus
+huawei_stf_trt_alooa = "com.android.packageinstaller:id/permission_allow_button"
 
 ios = {
 	"des_dic":"test_bundel_id"
@@ -41,12 +41,12 @@ ios = {
 android = {
 	"des_dic":{
 	'platformName':'Android',
-	#'platformVersion':'8.0.0',
 	'deviceName':'s6',
 	'appActivity':'.SplashActivity',
-	'appPackage':'com.union_test.toutiao'
+	'appPackage':'com.union_test.toutiao',
+	'automationName':"uiautomator2"
 	},
-	"allow_instll_id":sanxing_s6,
+	"allow_instll_id":[huawei_mate10,huawei_mate10],
 }
 
 

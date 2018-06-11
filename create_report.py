@@ -1,4 +1,5 @@
 import time
+import logging
 
 def create_rep(result):
     """{
@@ -9,17 +10,19 @@ def create_rep(result):
         "event":event
         }
     """
-	print("----传入的测试结果：",result)
-	if result["case_code"]:
-		pass_or_fail = "测试通过"
-	else:
-		pass_or_fail = "测试未通过"
-	demo = """
+    logging.info("----传入的测试结果：",result)
+    if result["case_code"]:
+        pass_or_fail = "测试通过"
+    else:
+        pass_or_fail = "测试未通过"
+
+    # 拼接数据表以前的内容
+    html_1 = '''
 	<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>%s</title>
+    <title>%s'''%result['title']+'''</title>
     <style>
         /*上部分样式*/
         div#report_head{
@@ -56,7 +59,7 @@ def create_rep(result):
             width: 9%;
         }
     </style>
-</head>""" % result['title']+"""
+</head>"""+"""
 <body style="background-color:#7CFC00;">
     <!-- 报告的头部 -->
     <div id="report_head">
@@ -68,16 +71,24 @@ def create_rep(result):
             <!--假设10个事件,11列-->
             <!--测试结果，表头-->
             <thead>
-                <tr align="left">
-                    <th colspan="5">测试结论 : %s</th>
-                    <th colspan="6">测试时间 : %s</th>
+                <tr align="left">'''+'''
+                <th colspan="5">测试结论 : {}</th>
+                    <th colspan="6">测试时间 : {}</th>
                 </tr>
             </thead>
+                '''.format(pass_or_fail,result['runtime'])
+
+
+
+
+
+    '''
             <!--埋点测试结果，数据-->
             <tbody>
                 <tr align="left">
                     <td class="event_des_number"></td>
-                    <td class="event_des">点击事件<br>
+                    <td class="event_des">
+                        点击事件<br>
                         label = click<br>
                         tag = splash_ad<br>
                         tag = splash_ad<br>
@@ -169,15 +180,26 @@ def create_rep(result):
     </div>
 </body>
 </html>
-	"""%(result["title"],pass_or_fail,result["run_time"])
-	with open("./report/%s"%result["run_time"],"w",encoding = "utf-8") as f:
-		f.write(demo)
+	'''
+
+    with open("./report/%s"%result["run_time"],"w",encoding = "utf-8") as f:
+        f.write(demo)
 
 
 
 
 
-
+create_rep({
+		"title":"banner广告第一个用例",
+		"run_time":time.strftime("%Y-%m-%d %H:%M:%S"),
+		"case_code":False,
+		"error":["未展示广告","未能轮播","dislike点不了","落地页跳转失败"],
+		"event":{
+		"show":4,
+		"click":2,
+		"dislike":2
+		}
+		})
 
 
 
