@@ -6,24 +6,111 @@
 </head>
 <body>
     <div class="report_head" align="center">
-        <h3>title（这里需要换成广告种类）</h3>
+        <h2>title（这里需要换成广告种类）</h2>
         <h4>test result , tun time（是否测试通过，和测试时间）</h4>
         <hr>
     </div>
     <div class="report_body">
         <div class="filter_button">
-            <input type="button" value="筛选通过的" onclick="test_button()">
-            <input type="button" value="筛选未通过的" onclick="test_button()">
-            <input type="button" value="筛选埋点" onclick="test_button()">
+            <input type="button" value="筛选通过的" onclick="show_class_1()">
+            <input type="button" value="筛选未通过的" onclick="show_class_0()">
+            <input type="button" value="筛选埋点" onclick="show_class_2()">
+            <input type="button" value="展示所有结果" onclick="show_all()">
         </div>
         <div class="data_list">
-
+            <ul>
+                <!-- class的值
+                    1 = 测试通过
+                    0 = 测试未通过
+                    2 = 埋点        -->
+                <li class="1">auto test ,case 1 , ======pass</li>
+                <li class="0">auto test , case 2 , --------false</li>
+                <li class="2">click : =-=-=-=-=3</li>
+                <li class="1">auto test ,case 1 , ======pass</li>
+                <li class="0">auto test , case 2 , --------false</li>
+                <li class="2">click : =-=-=-=-=3</li>
+                <li class="1">auto test ,case 1 , ======pass</li>
+                <li class="0">auto test , case 2 , --------false</li>
+                <li class="2">click : =-=-=-=-=3</li>
+                <li class="1">auto test ,case 1 , ======pass</li>
+                <li class="0">auto test , case 2 , --------false</li>
+                <li class="2">click : =-=-=-=-=3</li>
+            </ul>
         </div>
     </div>
 
 <script>
-    function test_button() {
-        alert("测试按钮的回调函数")
+    function show_class_1(){
+        // alert("筛选：测试通过的");
+        var pass_els = document.getElementsByClassName("1");
+        var flase_els = document.getElementsByClassName("0");
+        var data_els = document.getElementsByClassName(2);
+        // 隐藏未通过的
+        for (var i=0 ; i < flase_els.length;i++){
+            flase_els[i].style.display="none";
+        }
+        // 隐藏埋点结果
+        for (var j=0 ; j < flase_els.length;j++){
+            data_els[j].style.display="none";
+        }
+        // 展示通过的
+        for (var k=0 ; k< pass_els.length;k++){
+            pass_els[k].style.display="block";
+        }
+    }
+    function show_class_0(){
+        // alert("t筛选：测试未通过的");
+        var pass_els = document.getElementsByClassName("1");
+        var flase_els = document.getElementsByClassName("0");
+        var data_els = document.getElementsByClassName(2);
+        // 隐藏通过的
+        for (var i=0 ; i < pass_els.length;i++){
+            pass_els[i].style.display="none";
+        }
+        // 隐藏埋点的
+        for (var j=0 ; j < flase_els.length;j++){
+            data_els[j].style.display="none";
+        }
+        // 显示未通过的
+        for (var k=0 ; k < flase_els.length;k++){
+            flase_els[k].style.display="block";
+        }
+    }
+    function show_class_2(){
+        // alert("筛选：所有的埋点数据");
+        var pass_els = document.getElementsByClassName("1");
+        var flase_els = document.getElementsByClassName("0");
+        var data_els = document.getElementsByClassName(2);
+        // 隐藏未通过的
+        for (var i=0 ; i < flase_els.length;i++){
+            flase_els[i].style.display="none";
+        }
+        // 隐藏通过的
+        for (var j=0 ; j < pass_els.length;j++){
+            pass_els[j].style.display="none";
+        }
+        // 展示埋点的
+        for (var k=0 ; k < flase_els.length;k++){
+            data_els[k].style.display="block";
+        }
+    }
+    function show_all(){
+        // alert("展示所有的结果");
+        var pass_els = document.getElementsByClassName("1");
+        var flase_els = document.getElementsByClassName("0");
+        var data_els = document.getElementsByClassName(2);
+        // 展示未通过的
+        for (var i=0 ; i < flase_els.length;i++){
+            flase_els[i].style.display="block";
+        }
+        // 展示埋点
+        for (var j=0 ; j < flase_els.length;j++){
+            data_els[j].style.display="block";
+        }k
+        // 展示通过的
+        for (var k=0 ; k < pass_els.length;k++){
+            pass_els[k].style.display="block";
+        }
     }
 </script>
 </body>
